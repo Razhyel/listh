@@ -1,4 +1,4 @@
 # listh
-Just a new F project 
+Just a new L project 
 
-Coming soon
+Coming soon...
