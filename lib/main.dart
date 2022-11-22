@@ -125,68 +125,75 @@ class _NavBarPageState extends State<NavBarPage> {
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
       body: _currentPage ?? tabs[_currentPageName],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
-        onTap: (i) => setState(() {
-          _currentPage = null;
-          _currentPageName = tabs.keys.toList()[i];
-        }),
-        backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
-        selectedItemColor: FlutterFlowTheme.of(context).primaryColor,
-        unselectedItemColor: FlutterFlowTheme.of(context).grayLight,
-        showSelectedLabels: true,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.home_outlined,
-              size: 24,
+      bottomNavigationBar: Visibility(
+        visible: responsiveVisibility(
+          context: context,
+          tabletLandscape: false,
+          desktop: false,
+        ),
+        child: BottomNavigationBar(
+          currentIndex: currentIndex,
+          onTap: (i) => setState(() {
+            _currentPage = null;
+            _currentPageName = tabs.keys.toList()[i];
+          }),
+          backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
+          selectedItemColor: FlutterFlowTheme.of(context).primaryColor,
+          unselectedItemColor: FlutterFlowTheme.of(context).grayLight,
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+          type: BottomNavigationBarType.fixed,
+          items: <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home_outlined,
+                size: 24,
+              ),
+              activeIcon: Icon(
+                Icons.home_rounded,
+                size: 24,
+              ),
+              label: '•',
+              tooltip: '',
             ),
-            activeIcon: Icon(
-              Icons.home_rounded,
-              size: 24,
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.date_range_outlined,
+                size: 24,
+              ),
+              activeIcon: Icon(
+                Icons.date_range_rounded,
+                size: 24,
+              ),
+              label: '•',
+              tooltip: '',
             ),
-            label: '•',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.date_range_outlined,
-              size: 24,
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.favorite_border_rounded,
+                size: 24,
+              ),
+              activeIcon: Icon(
+                Icons.favorite_rounded,
+                size: 24,
+              ),
+              label: '•',
+              tooltip: '',
             ),
-            activeIcon: Icon(
-              Icons.date_range_rounded,
-              size: 24,
-            ),
-            label: '•',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.favorite_border_rounded,
-              size: 24,
-            ),
-            activeIcon: Icon(
-              Icons.favorite_rounded,
-              size: 24,
-            ),
-            label: '•',
-            tooltip: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.account_circle_outlined,
-              size: 24,
-            ),
-            activeIcon: Icon(
-              Icons.account_circle_rounded,
-              size: 24,
-            ),
-            label: '•',
-            tooltip: '',
-          )
-        ],
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.account_circle_outlined,
+                size: 24,
+              ),
+              activeIcon: Icon(
+                Icons.account_circle_rounded,
+                size: 24,
+              ),
+              label: '•',
+              tooltip: '',
+            )
+          ],
+        ),
       ),
     );
   }
